@@ -15,7 +15,14 @@ class ProductsController extends Controller
     {   
         $categories = Category::orderBy('name')->get();
         $products = Product::with('category')->get();
-        return view('products', compact('products', 'categories'));
+        return view('products.index', compact('products', 'categories'));
+       
+    }
+     public function dashboard()
+    {   
+        $categories = Category::orderBy('name')->get();
+        $products = Product::with('category')->get();
+        return view('dashboard', compact('products', 'categories'));
        
     }
 
@@ -127,7 +134,6 @@ class ProductsController extends Controller
         return view('dashboard', ['products' => $products]);
     }
     
-
     // Cart => 
     public function cart()
     {
@@ -153,7 +159,7 @@ class ProductsController extends Controller
         }
         
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('cart');
     }
 
     public function updateCart(Request $request)

@@ -22,28 +22,20 @@ Route::resource('products', ProductsController::class);
 // CART
 // Route::get('/', [ProductController::class, 'index']); 
 Route::get('cart', [ProductsController::class, 'cart'])->name('cart');
-// Route::get('add-to-cart/{id}', [ProductsController::class, 'addToCart'])->name('add.to.cart');
-// Route::patch('update-cart', [ProductsController::class, 'updateCart'])->name('update.cart');
-// Route::delete('remove-from-cart', [ProductsController::class, 'removeCart'])->name('remove.from.cart');
+Route::post('add-to-cart/{id}', [ProductsController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ProductsController::class, 'updateCart'])->name('update.cart');
+Route::delete('remove-from-cart', [ProductsController::class, 'removeCart'])->name('remove.cart');
 
 // PRICE 
 Route::get('/search', [ProductsController::class,'search'])->name('search');
 Route::get('/searchByPrice', [ProductsController::class,'searchByPrice'])->name('searchByPrice');
-// cart 2 
-// Route::get('/dashboard', [ProductsController::class, 'products']);  
-Route::get('/shopping-cart', [ProductsController::class, 'productsCart'])->name('shopping.cart');
-Route::get('/products/{id}', [ProductsController::class, 'addProductstoCart'])->name('addProducts.to.cart');
-Route::patch('/update-shopping-cart', [ProductsController::class, 'updateCart'])->name('update.shopping.cart');
-Route::delete('/delete-cart-product', [ProductsController::class, 'deleteProducts'])->name('delete.cart.products');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ProductsController::class, 'dashboard'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::resource('products', ProductsController::class);
