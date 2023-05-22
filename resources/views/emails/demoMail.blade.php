@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ItsolutionStuff.com</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $mailData['title'] }}</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <h1>{{ $mailData['title'] }}</h1>
-    <p>{{ $mailData['body'] }}</p>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to YSN SHOP</h1>
+        <p class="text-gray-600">Your command has been passed successfully.</p>
   
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-     
-    <p>Thank you</p>
+        <p class="text-xs text-gray-600"> Thank you for your order!</p>
+    </div>
 </body>
 </html>
