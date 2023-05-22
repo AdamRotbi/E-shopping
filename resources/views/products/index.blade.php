@@ -17,6 +17,18 @@
                 </a>
             {{-- </caption> --}}
         </div>
+        <div>
+
+
+            <a href="{{ route('products.export') }}">Export Products</a>
+            <a href="{{ route('generate') }}">generate</a>
+
+
+                    
+                 
+            
+            {{-- <a href="{{ route('products.export') }}">Export Products</a> --}}
+        </div>
         </div>
         <table class="w-full text-sm text-left text-gray-100 dark:text-gray-400">
         <thead class="text-xs text-gray-100 uppercase bg-gray-50 dark:bg-gray-500 dark:text-gray-400">
@@ -67,7 +79,8 @@
                             @csrf
                             @method("DELETE")
                             <button type="submit" class="text-red-500	"> Delete </a>
-                        </form>          
+                        </form>  
+                            
                     </div>
                 </td>
             </tr>

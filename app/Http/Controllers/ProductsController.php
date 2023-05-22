@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
-class ProductsController extends Controller
+class ProductsController extends Controller 
 {
     /**
      * Display a listing of the resource.
@@ -100,6 +102,17 @@ class ProductsController extends Controller
     {
         return view('products.edit', compact('product'));
     }
+    
+    public function show($id)
+    {
+        $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->route('products.index')->with('error', 'Product not found');
+        }
+
+        return view('products.export', compact('product'));
+    }
 
 
 
@@ -184,5 +197,11 @@ class ProductsController extends Controller
             }
             session()->flash('success', 'Product removed successfully');
         }
+    }
+    
+    public function export() 
+    {
+        dd('$id');
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 }   

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
@@ -36,11 +37,13 @@ Route::get('send-mail',[MailController::class,'index'])->name('email');
 
 
 Route::get('/', [ProductsController::class, 'dashboard'])->name('dashboard');
+Route::get('/products/export/', [ProductsController::class, 'export'])->name('products.export');
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generate');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 
     
-    
+
     Route::resource('products', ProductsController::class);
     Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
     Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
