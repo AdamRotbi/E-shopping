@@ -73,7 +73,6 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
-        
+    </table>        
     </div>
 </x-app-layout>

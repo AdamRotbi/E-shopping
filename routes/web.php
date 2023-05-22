@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\CategoriesController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +29,7 @@ Route::delete('remove-from-cart', [ProductsController::class, 'removeCart'])->na
 // PRICE 
 Route::get('/search', [ProductsController::class,'search'])->name('search');
 Route::get('/searchByPrice', [ProductsController::class,'searchByPrice'])->name('searchByPrice');
-
+Route::get('send-mail',[MailController::class,'index'])->name('email');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -38,6 +38,9 @@ Route::get('/searchByPrice', [ProductsController::class,'searchByPrice'])->name(
 Route::get('/', [ProductsController::class, 'dashboard'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+
+    
+    
     Route::resource('products', ProductsController::class);
     Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
     Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
