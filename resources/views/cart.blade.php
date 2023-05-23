@@ -14,13 +14,13 @@
     @php $total = 0 @endphp
     @if(session('cart'))
         @foreach(session('cart') as $id => $details)
-            @php 
+            @php
                 $subtotal = $details['price'] * $details['quantity'];
                 $total += $subtotal;
             @endphp
             <tr rowId="{{ $id }}" class="bg-white dark:bg-gray-700">
                 <td class="px-4 py-2 text-center">
-                    <img src="{{ asset('storage/uploads/' . $details['image']) }}" alt="{{ $details['image']}}" class="h-24 w-24 object-cover rounded-t-lg">                            
+                    <img src="{{ asset('storage/uploads/' . $details['image']) }}" alt="{{ $details['image']}}" class="h-24 w-24 object-cover rounded-t-lg">
                 </td>
                 <td class="px-4 py-2 text-center"> <h4 class="font-semibold">{{ $details['name'] }}</h4></td>
                 <td class="px-4 py-2 text-center">{{ $details['quantity'] }}</td>
@@ -36,28 +36,22 @@
     @endif
 </tbody>
 <tfoot>
-    {{-- <tr>
-        <td colspan="4" class="text-right px-4 py-2">Total:</td>
-        <td class="text-center px-4 py-2">${{ $total }}</td>
-        <td class="px-4 py-2"></td>
-    </tr> --}}
     <tr>
         <td colspan="6" class="text-right px-4 py-2">
-            <a href="{{ url('/dashboard') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Continue Shopping</a>
-            {{-- <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Checkout</button> --}}
-            <a class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" href="{{ route('email') }}">Checkout</a>
+            <a href="{{ url('/') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">return to E-shopping</a>
+            <a class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" href="{{ route('email') }}">proced your puchase</a>
         </td>
     </tr>
 </tfoot>
 
-         
+
     </table>
 </x-app-layout>
 
-  
+
 @section('scripts')
 <script type="text/javascript">
-  
+
     $(".edit-cart-info").change(function (e) {
         e.preventDefault();
         var ele = $(this);
@@ -65,26 +59,26 @@
             url: '{{ route('update.cart') }}',
             method: "patch",
             data: {
-                _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("rowId"), 
+                _token: '{{ csrf_token() }}',
+                id: ele.parents("tr").attr("rowId"),
             },
             success: function (response) {
                window.location.reload();
             }
         });
     });
-  
+
     $(".delete-products").click(function (e) {
         e.preventDefault();
-  
+
         var ele = $(this);
-  
+
         if(confirm("Do you really want to delete?")) {
             $.ajax({
                 url: '{{ route('remove.cart') }}',
                 method: "DELETE",
                 data: {
-                    _token: '{{ csrf_token() }}', 
+                    _token: '{{ csrf_token() }}',
                     id: ele.parents("tr").attr("rowId")
                 },
                 success: function (response) {
@@ -93,6 +87,6 @@
             });
         }
     });
-  
+
 </script>
 @endsection

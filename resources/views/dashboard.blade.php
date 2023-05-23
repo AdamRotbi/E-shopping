@@ -1,14 +1,14 @@
 <x-app-layout>
-  <h1 class="text-3xl mb-8 dark:text-white">Welcome!</h1>
+  <h1 class="text-3xl mb-8 dark:text-white">E-shopping with you anywhere</h1>
   <div class="flex justify-center space-x-4 mb-6 ">
     <form class="flex" action="{{ route('search') }}" method="GET">
       <input class="border rounded px-2 py-1 mr-2" type="text" name="search" placeholder="Name" aria-label="Search">
-      <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Rechercher</button>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">search per name</button>
     </form>
     <form class="flex" action="{{ route('searchByPrice') }}" method="GET">
-      <input class="border rounded px-2 py-1 mr-2" type="text" name="minPrice" placeholder="Prix minimum">
-      <input class="border rounded px-2 py-1 mr-2" type="text" name="maxPrice" placeholder="Prix maximum">
-      <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Rechercher</button>
+      <input class="border rounded px-2 py-1 mr-2" type="text" name="minPrice" placeholder="minPrice">
+      <input class="border rounded px-2 py-1 mr-2" type="text" name="maxPrice" placeholder="maxPrice">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">search per price</button>
     </form>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
