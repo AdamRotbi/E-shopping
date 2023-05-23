@@ -19,9 +19,8 @@
         </div>
         <div>
 
-
-            {{-- <a href="{{ route('products.export') }}">Export Products</a>
-            <a href="{{ route('generate') }}">generate</a> --}}
+            <button class=" text-white-400 rounded-xl p-2 text-center  "><a href="{{ route('products.export') }}">csv</a>csv</button>
+            <a href="{{ route('generate') }}">pdf</a>
 
 
 

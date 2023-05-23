@@ -17,7 +17,7 @@
         <img src="{{ asset('storage/uploads/' . $product->image) }}" alt="{{ $product->name }}" class="h-48 w-full object-cover rounded-t-lg">
         <div class="p-4">
           <h4 class="text-lg font-semibold dark:text-white">{{ $product->name }}</h4>
-          <p class="text-gray-600 dark:text-gray-400 mt-2">${{ $product->price }}</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-2">{{ $product->price }}DH</p>
         </div>
         <div class="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-b-lg flex justify-end">
             <form action="{{ route('add.to.cart', $product->id) }}" method="post">

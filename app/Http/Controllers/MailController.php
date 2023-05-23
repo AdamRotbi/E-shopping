@@ -1,11 +1,11 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
+
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\DemoMail;
-  
+
 class MailController extends Controller
 {
     /**
@@ -16,11 +16,11 @@ class MailController extends Controller
     public function index()
     {
         $mailData = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp.'
+            'title' => 'Mail from E-shopping',
+            'body' => 'This is verification mail.'
         ];
-         
-        Mail::to('yssnmed@gmail.com')->send(new DemoMail($mailData));
-           
+
+        Mail::to('adam.rotbi11@gmail.com')->send(new DemoMail($mailData));
+
         return redirect()->route('cart');    }
 }
